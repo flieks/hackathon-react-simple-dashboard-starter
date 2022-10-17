@@ -21,6 +21,6 @@ npm run dev
 - material theme
 - fast reload with vite
 - easy create FORMs through react-hook-form
-- (coming) Line Chart page example
+- Line Chart page example
+- example for POST and GET with fetch
 - (coming) date input form binding
-- (coming) example for POST and GET with fetch
