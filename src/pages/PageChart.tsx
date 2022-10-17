@@ -34,7 +34,7 @@ ChartJS.register(
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart',
+        text: 'Date data',
       },
     },
   };
@@ -61,14 +61,51 @@ ChartJS.register(
     ],
   };
 
+  const d = new Date()
+  const dates = []
+  for (let index = 1; index < 10; index++) {
+    const dd = new Date(d)
+    dd.setMinutes(d.getMinutes() + index)
+    dates.push(dd)
+  }
+
+  debugger
+  const data2 = {
+    // dates, 
+    datasets: [
+      {
+        label: 'Time data',
+        data: [{ x: '2016-12-25', y: 20 }, { x: '2016-12-26', y: 10 }],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+    options: {
+        scales: {
+          xAxis: {
+            // The axis for this scale is determined from the first letter of the id as `'x'`
+            // It is recommended to specify `position` and / or `axis` explicitly.
+            type: 'time',
+          }
+        }
+      }
+  };
+
 export default function PageChart() {
-    return <div>
+    return <div style={{overflow: 'auto', height: '100vh', padding: '5em'}}>
         <Heading style={{ textAlign: 'center' }}>Chart Page</Heading>
 
         {/* <Doughnut data={...} /> */}
         <Line
             options={options}
             data={data}
+            // {...props}
+         />
+
+        <h3>Date Example:</h3>
+        <Line
+            options={options}
+            data={data2}
             // {...props}
          />
     </div>

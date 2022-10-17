@@ -8,8 +8,16 @@ import { Button } from '@mui/material';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import "dayjs";
+import { useState } from 'react';
+
 export default function PageForm(props: any) {
     const { register, handleSubmit } = useForm()
+    
+    const [dateStart, setDateStart] = useState<any>(undefined)
+    const [dateEnd, setDateEnd] = useState<any>(undefined)
 
     const TextFieldCustom = ({ reg, label, type = 'text' }) => <TextField
         {...register(reg)}
@@ -24,7 +32,11 @@ export default function PageForm(props: any) {
         try {
             const response = await fetch(`http://sendto_api.com/create_something`, {
                 method: 'POST',
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    ...data,
+                    dateStart,
+                    dateEnd
+                })
             })
             console.log(response)
             debugger
@@ -40,19 +52,25 @@ export default function PageForm(props: any) {
             <TextFieldCustom reg='name' label="Name" />
             <TextFieldCustom reg='last name' label="Last Name" />
 
-            {/* <TimePicker reg='name'
-                label="Time"
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <DateTimePicker reg='name'
-                label="Date Time picker"
-                renderInput={(params) => <TextField {...params} />}
-            /> */}
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                    value={dateStart}
+                    onChange={(e) => {
+                        setDateStart(e["$d"])
+                    }}
+                    renderInput={(params) => <TextField {...params}  style={{ margin: "0.75em 0" }} />}
+                />
+                <DateTimePicker
+                    value={dateEnd}
+                    onChange={(e) => {
+                        setDateEnd(e["$d"])
+                    }}
+                    renderInput={(params) => <TextField {...params}  style={{ margin: "0.75em 0" }} />}
+                />
+            </LocalizationProvider>
 
             <Button type="submit">SEND TO SERVER</Button>
         </form>
-
-        <h5>More types coming like date</h5>
 
         <div>check the code for submit</div>
 

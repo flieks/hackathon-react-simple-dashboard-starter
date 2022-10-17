@@ -23,4 +23,5 @@ npm run dev
 - easy create FORMs through react-hook-form
 - Line Chart page example
 - example for POST and GET with fetch
-- (coming) date input form binding
+- nicer menu
+- date inputs in FORM
