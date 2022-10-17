@@ -2,6 +2,7 @@ import { useLocation, BrowserRouter, Routes, Route, Navigate } from 'react-route
 import CssBaseline from '@mui/material/CssBaseline';
 
 import PageForm from './pages/PageForm'
+import PageList from './pages/PageList'
 import MainPage from './pages/MainPage'
 import PageChart from './pages/PageChart'
 import Layout from './Layout'
@@ -15,6 +16,7 @@ export const AppRouter = () => {
             <Route element={<Layout />}>
                 <Route path={"landing"} element={<MainPage />} />
                 <Route path={"form"} element={<PageForm />} />
+                <Route path={"list"} element={<PageList />} />
                 <Route path={"chart"} element={<PageChart />} />
             </Route>
             <Route

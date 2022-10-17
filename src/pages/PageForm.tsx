@@ -19,9 +19,18 @@ export default function PageForm(props: any) {
         style={{ margin: "0.75em 0" }}
     />
 
-    const onSubmit = data => {
-        // use FETCH API  to send data to server
-        debugger
+    const onSubmit = async data => {
+        // use FETCH API to send data to server
+        try {
+            const response = await fetch(`http://sendto_api.com/create_something`, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            console.log(response)
+            debugger
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return <div>
@@ -40,9 +49,12 @@ export default function PageForm(props: any) {
                 renderInput={(params) => <TextField {...params} />}
             /> */}
 
-            <Button type="submit">SEND</Button>
+            <Button type="submit">SEND TO SERVER</Button>
         </form>
 
         <h5>More types coming like date</h5>
+
+        <div>check the code for submit</div>
+
     </div>
 }

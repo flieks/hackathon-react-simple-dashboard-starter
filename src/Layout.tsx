@@ -28,11 +28,15 @@ const menu = [
     },
     {
         path: '/form',
-        name: 'Form page'
+        name: 'Form code example'
+    },
+    {
+        path: '/list',
+        name: 'GET server-data code example'
     },
         {
         path: '/chart',
-        name: 'Chart page'
+        name: 'Chart code example'
     },
 ]
 
