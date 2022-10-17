@@ -8,7 +8,7 @@ import { Button } from '@mui/material';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
-export default function PageTwo(props: any) {
+export default function PageForm(props: any) {
     const { register, handleSubmit } = useForm()
 
     const TextFieldCustom = ({ reg, label, type = 'text' }) => <TextField
