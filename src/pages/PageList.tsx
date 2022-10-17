@@ -8,7 +8,7 @@ export default function MainPage(props: any) {
     const par2 = 'value2'
 
     return <div>
-        <Heading style={{ textAlign: 'center' }}>Main Page</Heading>
+        <Heading style={{ textAlign: 'center' }}>GET LIST DATA</Heading>
 
         <Button onClick={async () => {
             // use FETCH API to GET data from server
